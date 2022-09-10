@@ -1,0 +1,20 @@
+# this is ansible vault file
+---
+
+-  name: Playbook 1
+   hosts: all
+   become: yes
+   become_user: ansible
+   become_user: root
+   become_method: sudo
+
+   tasks:
+   - name: Create Folder in Client side 
+     file:
+       path: "/home/ansible/infosys"
+       state: directory
+       
+   - name: Create File in Client Side
+     file:
+       path: "/home/ansible/infosysPatch1.txt"
+       state: touch

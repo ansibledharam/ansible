@@ -1,0 +1,14 @@
+# this is motd-role yaml file
+
+---
+- name: use motd role playbook
+  hosts: all
+  become_user: ansible
+  become: yes
+  become_user: root
+  become_method: sudo
+
+  roles :
+    - role: motd
+      system_manager : ansible1980@gmail.com
+

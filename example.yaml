@@ -1,0 +1,60 @@
+# this is ansible playbook example file
+---
+- name: Example playbook
+  hosts: all
+  become: yes
+  become_user: ansible
+  become_user: root
+  become_method: sudo
+  
+
+  vars:
+    greeting: "Welcome to INFOSYS Team "
+    copyright: "this is INFOSYS  Proprties"
+
+  tasks: 
+  - name: Creating a New Directory 
+    file:
+     path: "/home/ansible/example-folder"
+     state: directory
+
+  - name: Creating a New File 
+    file:
+     path: "/home/ansible/example-file"
+     state: touch
+
+  - name: Deploy Greeting 
+    copy:
+     dest: "/home/ansible/example-file"
+     content: "{{ greeting }}"
+
+  - name: Install Web server package in node2
+    yum:
+     name: http*
+     state: latest
+
+  - name: Start Web service
+    service:
+     name: httpd
+     state: started
+
+  - name: add hello.sh script in node2 /var/www/html folder 
+    script: hello.sh
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
